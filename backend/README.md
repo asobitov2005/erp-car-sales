@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/jawokhirdev/erp-car-sales-automation.git
+   git clone https://github.com/asobitov2005/erp-car-sales.git
 2. Change into the project directory:
    ```bash
    cd erp-car-sales-automation
