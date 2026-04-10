@@ -1,14 +1,17 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
+
 from api.models.Car import Car
 from api.models.Branch import Branch
-from users.models import User
 from api.models.Transfer import Transfer
+
+User = get_user_model()
 
 
 class TransferSerializer(serializers.ModelSerializer):
-    car = serializers.PrimaryKeyRelatedField(queryset=Car.objects.all)
-    branch = serializers.PrimaryKeyRelatedField(queryset=Branch.objects.all)
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all)
+    car = serializers.PrimaryKeyRelatedField(queryset=Car.objects.all())
+    branch = serializers.PrimaryKeyRelatedField(queryset=Branch.objects.all())
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
 
     class Meta:
         model = Transfer

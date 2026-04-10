@@ -15,6 +15,7 @@ python-dotenv==1.0.1
 pytz==2024.1
 PyYAML==6.0.1
 requests==2.31.0
+setuptools<81
 sqlparse==0.4.4
 typing_extensions==4.10.0
 uritemplate==4.1.1

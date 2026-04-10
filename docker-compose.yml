@@ -1,0 +1,20 @@
+services:
+  web:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: erp-car-sales-web
+    command: /app/entrypoint.sh
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - sqlite_data:/app/data
+      - media_data:/app/media
+    environment:
+      DJANGO_SETTINGS_MODULE: core.settings
+      SQLITE_PATH: /app/data/db.sqlite3
+
+volumes:
+  sqlite_data:
+  media_data:

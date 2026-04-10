@@ -10,7 +10,29 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'email')
+        fields = (
+            'id',
+            'username',
+            'password',
+            'email',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'date_of_birth',
+            'gender',
+            'address',
+            'position',
+            'salary',
+            'hire_date',
+        )
+        read_only_fields = ('id',)
+
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class LoginSerializer(serializers.Serializer):

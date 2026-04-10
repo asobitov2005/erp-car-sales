@@ -1,6 +1,6 @@
 import uuid
 
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 
 from api.models.Car import Car
@@ -15,13 +15,13 @@ class Order(models.Model):
         CANCELED = 'canceled', 'Canceled'
 
     class PaymentType(models.TextChoices):
-        CARD = 'card', 'Naqd'
-        CASH = 'cash', 'Plastik karta'
+        CARD = 'card', 'Plastik karta'
+        CASH = 'cash', 'Naqd'
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     car = models.OneToOneField(Car, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     total_price = models.IntegerField(default=0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=StatusChoices.choices, default=StatusChoices.PENDING)
     payment_type = models.CharField(max_length=20, choices=PaymentType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
